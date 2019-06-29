@@ -1,4 +1,4 @@
-const Database = require('../knex');
+const db = require('../knex');
 
 module.exports = {
   add,
@@ -8,17 +8,17 @@ module.exports = {
 };
 
 function find() {
-  return Database('users');
+  return db('users');
 }
 
 function add(user) {
-  return Database('users').insert(user);
+  return db('users').insert(user).then(ids => ids[0]);
 }
 
 function findById(id) {
-  return Database('users').where({ id }).first();
+  return db('users').where({ id }).first();
 }
 
-function findBy(fill) {
-  return Database('users').where(fill);
+function findBy(username) {
+  return db('users').where("username", username).first();
 }

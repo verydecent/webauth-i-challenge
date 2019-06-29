@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const Database = require('./users-model');
-console.log(Database)
 
 router.get('/users', (req, res) => {
   Database.find()
